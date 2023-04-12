@@ -4,10 +4,10 @@ use regex::Regex;
 
 fn main() {
     // ToDo
-    // [] Accept arguments
-    // [] Read the file
-    // [] Parse the file & swap the letters
-    // [] Write the file
+    // [x] Accept arguments
+    // [x] Read the file
+    // [x] Parse the file & swap the letters
+    // [x] Write the file
 
     let args: Vec<String> = env::args().collect();
     let file_path = &args[1];
