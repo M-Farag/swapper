@@ -1,24 +1,21 @@
-use std::env;
 use std::fs;
 // https://docs.rs/regex/latest/regex/index.html#
 use regex::Regex;
+use swapper::Arguments;
 
 fn main() {
-    // ToDo
+    // todo: 
     // [x] Accept arguments
     // [x] Read the file
     // [x] Parse the file & swap the letters
     // [x] Write the file
 
-    let args: Vec<String> = env::args().collect();
-    let file_path = &args[1];
-    let origin_letter = &args[2];
-    let new_letter = &args[3];
+    let args = Arguments::new();
 
-    let mut contents = fs::read_to_string(file_path).unwrap();
-    let re = Regex::new(&origin_letter).unwrap();
-    contents = re.replace_all(&contents, new_letter).to_string();
+    let mut contents = fs::read_to_string(args.file_path()).unwrap();
+    let re = Regex::new(args.origin_string()).unwrap();
+    contents = re.replace_all(&contents, args.new_string()).to_string();
 
-    fs::write(file_path, contents).unwrap();
+    fs::write(args.file_path(), contents).unwrap();
 
 }
